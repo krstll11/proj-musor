@@ -51,6 +51,7 @@
 .prices p {
   font-size: 16px;
   margin-bottom: 20px;
+  color: #003153;
 }
 
 .price-cards {
