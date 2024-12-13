@@ -1,127 +1,169 @@
 <template>
-    <div class="waste-removal-form">
-      <h2>Заявка на вывоз мусора</h2>
-      <div class="form-container">
+    <div class="container">
+      <h1 class="form-title">Заявка на вывоз мусора</h1>
+      <div class="form-wrapper">
         <!-- Левая часть формы -->
         <div class="form-left">
-          <input type="text" placeholder="Имя" v-model="formData.name" />
-          <input type="text" placeholder="Номер телефона" v-model="formData.phone" />
-          <input type="text" placeholder="Адрес" v-model="formData.address" />
-          <input type="date" v-model="formData.date" />
+          <form class="form">
+            <input type="text" placeholder="Имя" class="form-input" />
+            <input type="tel" placeholder="Номер телефона" class="form-input" />
+            <input type="text" placeholder="Адрес" class="form-input" />
+            <input type="date" class="form-input" />
+          </form>
         </div>
-        
+  
         <!-- Правая часть формы -->
         <div class="form-right">
-          <label for="waste-type">Выберите тип мусора</label>
-          <select id="waste-type" v-model="formData.wasteType">
-            <option value="organic">Органический</option>
-            <option value="plastic">Пластик</option>
-            <option value="metal">Металл</option>
-            <option value="other">Другое</option>
-          </select>
-          
-          <p>Выберите тип контейнера</p>
-          <div class="container-options">
-            <button :class="{ active: formData.containerSize === 'small' }" @click="formData.containerSize = 'small'">Малый</button>
-            <button :class="{ active: formData.containerSize === 'medium' }" @click="formData.containerSize = 'medium'">Средний</button>
-            <button :class="{ active: formData.containerSize === 'large' }" @click="formData.containerSize = 'large'">Большой</button>
+          <div class="form-group">
+            <label for="trash-type" class="form-label">Выберите тип мусора</label>
+            <select id="trash-type" class="form-select">
+              <option value="">Тип мусора</option>
+              <option value="organic">Органический</option>
+              <option value="plastic">Пластик</option>
+              <option value="metal">Металл</option>
+            </select>
           </div>
-          <button class="submit-btn" @click="submitForm">Отправить</button>
+          <div class="form-group">
+            <span class="form-label">Выберите тип контейнера</span>
+            <div class="button-group">
+              <button class="container-button">Малый</button>
+              <button class="container-button">Средний</button>
+              <button class="container-button">Большой</button>
+            </div>
+          </div>
+          <button class="submit-button">Отправить</button>
         </div>
       </div>
     </div>
   </template>
   
   <script>
-  import { ref } from "vue";
-  
   export default {
-    name: "WasteRemovalForm",
-    setup() {
-      const formData = ref({
-        name: "",
-        phone: "",
-        address: "",
-        date: "",
-        wasteType: "organic",
-        containerSize: "small",
-      });
-  
-      const submitForm = () => {
-        console.log("Отправлено:", formData.value);
-        alert("Форма отправлена!");
-      };
-  
-      return {
-        formData,
-        submitForm,
-      };
-    },
+    name: "TrashForm",
   };
   </script>
   
   <style scoped>
-  .waste-removal-form {
-    width: 600px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: Arial, sans-serif;
+
+  .container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     background-image: url('../assets/BGImage1.png');
-    border-radius: 13px;
-    padding: 20px;
-    color: white;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .form-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    background-color: rgba(0, 49, 83, 0.6);
-    padding: 20px;
-    border-radius: 13px;
-  }
-  
-  .form-left input,
-  .form-right select {
-    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 13px;
   }
   
-  .container-options {
+ 
+  .form-wrapper {
     display: flex;
-    justify-content: space-around;
-    margin: 10px 0;
+    gap: 20px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    width: 100%;
+    flex-wrap: wrap;
   }
   
-  .container-options button {
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    border-radius: 13px;
-    background-color: #fff;
+
+  .form-title {
+    text-align: center;
+    font-size: 24px;
+    color: #003153;
+    margin-bottom: 20px;
+  }
+  
+  .form-left {
+    flex: 1 1 300px;
+  }
+  
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-input {
+    padding: 10px;
+    border: 1px solid rgba(0, 49, 83, 0.6);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .form-right {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .form-label {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .form-select {
+    padding: 10px;
+    border: 1px solid rgba(0, 49, 83, 0.6);
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .container-button {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid rgba(0, 49, 83, 0.6);
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
   }
   
-  .container-options button.active {
-    background-color: #003153;
-    color: white;
-    border-color: rgba(0, 49, 83, 0.6);
+  .container-button:hover {
+    background-color: #e0e0e0;
   }
   
-  .submit-btn {
-    padding: 10px 20px;
+  .submit-button {
+    padding: 10px;
     background-color: #003153;
     color: white;
     border: none;
-    border-radius: 13px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
+    transition: background-color 0.3s;
   }
   
-  .submit-btn:hover {
-    background-color: #0056b3;
+  .submit-button:hover {
+    background-color: #002644;
+  }
+  
+
+  @media (max-width: 768px) {
+    .form-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .form-left, .form-right {
+      flex: 1 1 100%;
+    }
   }
   </style>
-  
