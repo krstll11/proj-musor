@@ -49,6 +49,7 @@
 }
 
 .prices p {
+  color: #003153;
   font-size: 16px;
   margin-bottom: 20px;
 }
