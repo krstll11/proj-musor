@@ -2,7 +2,9 @@
     <nav class="navbar-container">
       <div class="navbar">
         <div class="navbar__logo">
+          <router-link :to="`/`">
           <img src="../assets/LogoHeader.png" alt="Logo" class="logo">
+          </router-link>
           <img src="../assets/List.png" alt="All" class="menu-icon">
           <img src="../assets/Language.png" alt="Language" class="language-icon">
         </div>
