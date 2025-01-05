@@ -9,20 +9,28 @@
         <div class="phone">+7 3435 555 55 55</div>
         <div class="navbar__links">
           <div class="icon cleaning_icon">
+            <router-link :to="`/cleaning`">
             <img src="../assets/Broom.png" alt="Broom">
             <p>Клининг</p>
+          </router-link>
           </div>
-          <div class="icon bucket_icon">    
+          <div class="icon bucket_icon">   
+            <router-link :to="`/musor`">
             <img src="../assets/Bucket.png" alt="Bucket">
             <p>Вывоз мусора</p>
+          </router-link>
           </div>
           <div class="icon company_icon">
+            <router-link :to="`/ccleaning`">
             <img src="../assets/Companies.png" alt="Companies">
             <p>Для компании</p>
+            </router-link>
           </div>
           <div class="icon map_icon">
+            <router-link :to="`/map`">
             <img src="../assets/Map.png" alt="Map">
             <p>Карта</p>
+            </router-link>
           </div>
         </div>
       </div>
@@ -30,10 +38,12 @@
   </template>
   
   <script setup>
+import router from '@/router';
+
   </script>
   
   <style scoped>
-  /* Основные стили */
+ 
   .navbar-container {
     display: flex;
     align-items: center;
