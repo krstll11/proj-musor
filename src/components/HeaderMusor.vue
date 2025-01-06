@@ -5,7 +5,11 @@
           <router-link :to="`/`">
           <img src="../assets/LogoHeader.png" alt="Logo" class="logo">
           </router-link>
-          <img src="../assets/List.png" alt="All" class="menu-icon">
+          <img
+          src="../assets/List.png"
+          alt="Menu"
+          class="menu-icon"
+          @click="toggleMenu"/>
           <img src="../assets/Language.png" alt="Language" class="language-icon">
         </div>
         <div class="phone">+7 3435 555 55 55</div>
@@ -35,13 +39,25 @@
             </router-link>
           </div>
         </div>
+        <div v-if="isMenuVisible" class="dropdown-menu">
+        <router-link :to="`/cleaning`">Клининг</router-link>
+        <router-link :to="`/musor`">Вывоз мусора</router-link>
+        <router-link :to="`/ccleaning`">Для компании</router-link>
+        <router-link :to="`/map`">Карта</router-link>
+      </div>
       </div>
     </nav>
   </template>
   
   <script setup>
 import router from '@/router';
+import { ref } from "vue";
 
+const isMenuVisible = ref(false);
+
+function toggleMenu() {
+  isMenuVisible.value = !isMenuVisible.value;
+}
   </script>
   
   <style scoped>
@@ -122,7 +138,38 @@ import router from '@/router';
     width: 30px;
     height: 30px;
   }
-  
+
+  .dropdown-menu {
+  position: absolute;
+  top: 64%;
+  right: 68%;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dropdown-menu a {
+  text-decoration: none;
+  color: #003153;
+  font-weight: 500;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+  background-color: #f0f0f0;
+}
+
+  @media (max-width: 805px) {
+    .phone {
+      font-size: 12px;
+    }
+  }
 
   @media (max-width: 768px) {
   .phone, 
@@ -132,8 +179,7 @@ import router from '@/router';
 
   .navbar {
     display: flex;
-    justify-content: space-between; 
-    align-items: center; 
+    justify-content: center; 
   }
 
   .menu-icon {
@@ -142,11 +188,26 @@ import router from '@/router';
 
   .navbar__logo {
     order: 1; 
+    display: flex;
   }
 
   .menu-icon {
     order: 2; 
   }
+}
+@media (max-width: 480px) {
+  .dropdown-menu {
+  position: absolute;
+  top: 68%;
+  right: 11%;
+  background-color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
 }
   </style>
   

@@ -9,7 +9,7 @@
             <input type="tel" placeholder="Номер телефона" class="form-input" />
             <input type="text" placeholder="Адрес" class="form-input" />
             <input type="date" class="form-input" />
-            <button class="submit-button">Отправить</button>
+            <button class="submit-button" @click="handleSubmit">Отправить</button>
           </div>
         </div>
   
@@ -52,12 +52,33 @@
           
         </div>
       </div>
+      <MessageBox v-if="showMessageBox" @close="closeMessageBox" />
     </div>
   </template>
   
   <script>
- 
+  import MessageBox from './MessageBox.vue';
+  
+  export default {
+    components: {
+      MessageBox
+    },
+    data() {
+      return {
+        showMessageBox: false
+      };
+    },
+    methods: {
+      handleSubmit() {
+        this.showMessageBox = true;
+      },
+      closeMessageBox() {
+        this.showMessageBox = false;
+      }
+    }
+  };
   </script>
+
   
   <style scoped>
   .container {
@@ -66,7 +87,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('../assets/BGImage1.png');
+    background-image: url('../assets/BGImage.png');
     background-size: cover;
     padding: 20px;
   }
@@ -85,7 +106,7 @@
   
   .form-title {
     text-align: center;
-    font-size: 20px;
+    font-size: 32px;
     color: #003153;
     margin-bottom: 15px;
   }
@@ -135,7 +156,7 @@
   }
   
   .form-label {
-    font-size: 14px;
+    font-size: 18px;
     color: #333;
     text-align: left;
     flex: 1;
@@ -194,5 +215,6 @@
       flex: 1 1 100%;
     }
   }
+  
   </style>
   

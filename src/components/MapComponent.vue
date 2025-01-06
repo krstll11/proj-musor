@@ -39,7 +39,7 @@
   }
   
   .map-title {
-    font-size: 18px;
+    font-size: 32px;
     font-weight: bold;
     color: #003153;
     margin-bottom: 15px;

@@ -1,47 +1,63 @@
 <template>
-    <div class="container">
-      <h1 class="form-title">Заявка на вывоз мусора</h1>
-      <div class="form-wrapper">
-        <!-- Левая часть формы -->
-        <div class="form-left">
-          <form class="form">
-            <input type="text" placeholder="Имя" class="form-input" />
-            <input type="tel" placeholder="Номер телефона" class="form-input" />
-            <input type="text" placeholder="Адрес" class="form-input" />
-            <input type="date" class="form-input" />
-          </form>
+  <div class="container">
+    <h1 class="form-title">Заявка на вывоз мусора</h1>
+    <div class="form-wrapper">
+      <div class="form-left">
+        <form class="form">
+          <input type="text" placeholder="Имя" class="form-input" />
+          <input type="tel" placeholder="Номер телефона" class="form-input" />
+          <input type="text" placeholder="Адрес" class="form-input" />
+          <input type="date" class="form-input" />
+        </form>
+      </div>
+
+      <div class="form-right">
+        <div class="form-group">
+          <label for="trash-type" class="form-label">Выберите тип мусора</label>
+          <select id="trash-type" class="form-select">
+            <option value="">Тип мусора</option>
+            <option value="organic">Органический</option>
+            <option value="plastic">Пластик</option>
+            <option value="metal">Металл</option>
+          </select>
         </div>
-  
-        <!-- Правая часть формы -->
-        <div class="form-right">
-          <div class="form-group">
-            <label for="trash-type" class="form-label">Выберите тип мусора</label>
-            <select id="trash-type" class="form-select">
-              <option value="">Тип мусора</option>
-              <option value="organic">Органический</option>
-              <option value="plastic">Пластик</option>
-              <option value="metal">Металл</option>
-            </select>
+        <div class="form-group">
+          <span class="form-label">Выберите тип контейнера</span>
+          <div class="button-group">
+            <button class="container-button">Малый</button>
+            <button class="container-button">Средний</button>
+            <button class="container-button">Большой</button>
           </div>
-          <div class="form-group">
-            <span class="form-label">Выберите тип контейнера</span>
-            <div class="button-group">
-              <button class="container-button">Малый</button>
-              <button class="container-button">Средний</button>
-              <button class="container-button">Большой</button>
-            </div>
-          </div>
-          <button class="submit-button">Отправить</button>
         </div>
+        <button class="submit-button" type="button" @click="handleSubmit">Отправить</button>
       </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "TrashForm",
-  };
-  </script>
+    <MessageBox v-if="showMessageBox" @close="closeMessageBox" />
+  </div>
+</template>
+
+<script>
+import MessageBox from './MessageBox.vue';
+export default {
+  name: "TrashForm",
+  components: {
+    MessageBox,
+  },
+  data() {
+    return {
+      showMessageBox: false,
+    };
+  },
+  methods: {
+    handleSubmit() {
+      this.showMessageBox = true;
+    },
+    closeMessageBox() {
+      this.showMessageBox = false;
+    },
+  },
+};
+</script>
   
   <style scoped>
 
@@ -73,7 +89,7 @@
 
   .form-title {
     text-align: center;
-    font-size: 24px;
+    font-size: 32px;
     color: #003153;
     margin-bottom: 20px;
   }
@@ -109,7 +125,7 @@
   }
   
   .form-label {
-    font-size: 14px;
+    font-size: 18px;
     color: #333;
   }
   
@@ -154,12 +170,31 @@
   .submit-button:hover {
     background-color: #002644;
   }
+  @media (max-width: 1110px) {
+    .form-wrapper {
+      align-items: center;
+      width: 50%;
+    }
   
+    .form-left, .form-right {
+      flex: 1 1 100%;
+    }
+  }
 
   @media (max-width: 768px) {
     .form-wrapper {
-      flex-direction: column;
       align-items: center;
+      width: 75%;
+    }
+  
+    .form-left, .form-right {
+      flex: 1 1 100%;
+    }
+  }
+  @media (max-width: 480px) {
+    .form-wrapper {
+      align-items: center;
+      width: 75%;
     }
   
     .form-left, .form-right {

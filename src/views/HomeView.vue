@@ -59,13 +59,14 @@ const companyinformations = ref([
 .main p {
   font-size: 18px;
   margin-bottom: 20px;
+  padding: 0px 10px;
 }
 
 .main-btn {
   height: 104px;
   width: 360px;
   padding: 10px 20px;
-  font-size: 18px;
+  font-size: 24px;
   background-color: #003153;
   color: #fff;
   border: none;
@@ -89,7 +90,7 @@ const companyinformations = ref([
 
   .main-btn {
     padding: 10px 20px;
-    font-size: 1rem;
+    font-size: 24px;
   }
 }
 
@@ -103,8 +104,10 @@ const companyinformations = ref([
   }
 
   .main-btn {
-    padding: 8px 16px;
-    font-size: 0.9rem;
+  height: 70px;
+  width: 280px;
+  padding: 10px 20px;
+  font-size: 18px;
   }
 }
 </style>
