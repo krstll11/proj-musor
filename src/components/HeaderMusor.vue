@@ -80,7 +80,9 @@ function toggleMenu() {
     max-width: 1200px;
     width: 100%;
   }
-  
+  .phone{
+    cursor: pointer;
+  }
   .navbar__logo {
     display: flex;
     align-items: center;

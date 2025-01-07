@@ -123,7 +123,7 @@ export default {
     flex-direction: column;
     gap: 10px;
   }
-  
+ 
   .form-label {
     font-size: 18px;
     color: #333;
@@ -155,7 +155,10 @@ export default {
   .container-button:hover {
     background-color: #e0e0e0;
   }
-  
+  .container-button:focus {
+    background-color: #003153;
+  color:#fff
+  }
   .submit-button {
     padding: 10px;
     background-color: #003153;

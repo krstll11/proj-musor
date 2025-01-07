@@ -1,9 +1,9 @@
 <template>
     <div class="footer-container">
     <div class="footer_info">
-        <img src="../assets/Street.png" alt="Street">
-        <img src="../assets/Email.png" alt="Email">
-        <img src="../assets/Phone.png" alt="Phone">
+        <a href="https://yandex.ru/maps/?um=constructor%3Ace40098d28f870a26ae818604e02007ebd90a433a356c611ab1f74172c76e4e4&source=constructorLink" target="_blank"><img src="../assets/street.svg" alt="Street"></a>
+        <img src="../assets/mail.svg" alt="Email">
+        <img src="../assets/phone.svg" alt="Phone">
     </div>
     <div class="footer_text">
         <p>Компания "Мусорка" находится по адресу: Бассейная улица, дом 29, Нижний Тагил. 
@@ -23,6 +23,9 @@
     background-color: #3D3D3D;
     
 }
+.footer_info{
+    cursor: pointer;
+}
 .footer_text{
     color: #909090;
     display: flex;
@@ -38,6 +41,7 @@
         display: flex;
         flex-direction: column;
     }
+   
     .footer_text{
         display: none;
     }

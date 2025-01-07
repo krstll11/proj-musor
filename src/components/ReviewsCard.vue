@@ -1,22 +1,22 @@
 <template>
-    <div class="company-info-container">
+  <div class="company-info-container">
     <div class="company-info">
-      <div class="left">
-      <img src="../assets/corner_left.svg" class="corner" alt="icon">
-    </div>
-      <div v-for="(info, index) in companyinformations" :key="index">
-        <div class="header-company-info">
-        <img src="../assets/Union.svg" class="face" alt="icon">
-        <h1>{{ info.name }}</h1>
-        </div>
-        <p>{{ info.info }}</p>
+      <div class="left" @click="prevInfo">
+        <img src="../assets/corner_left.svg" class="corner" alt="icon" />
       </div>
-      <div class="right">
-      <img src="../assets/corner_right.svg" class="corner" alt="icon">
-     </div>
+      <div>
+        <div class="header-company-info">
+          <img src="../assets/Union.svg" class="face" alt="icon" />
+          <h1>{{ currentInfo.name }}</h1>
+        </div>
+        <p>{{ currentInfo.info }}</p>
+      </div>
+      <div class="right" @click="nextInfo">
+        <img src="../assets/corner_right.svg" class="corner" alt="icon" />
+      </div>
     </div>
   </div>
-  </template>
+</template>
   
   <script>
 
@@ -31,7 +31,35 @@ export default {
           name: "Анна Иванова",
           info: "Трудились в поте лица целый день.. убрали даже там, где не должны были,\nно как хозяйки мимо не смогли пройти) расставили на свой взгляд мелкую бытовую технику, приспособления на кухне и наполнение холодильника..\nизвинились при этом за предложенный вариант..\nа я оставила и радуюсь, как так сама не додумалась) Успехов и процветания!",
         },
+        {
+          name: "Иван Петров",
+          info: "Очень доволен сервисом, уборка выполнена на высшем уровне! Спасибо за внимание к деталям.",
+        },
+        {
+          name: "Ольга Смирнова",
+          info: "Рекомендую! Работают быстро, аккуратно и с улыбкой. Всем довольна.",
+        },
       ],
+    },
+  },
+  data() {
+    return {
+      currentIndex: 0, 
+    };
+  },
+  computed: {
+    currentInfo() {
+      return this.companyinformations[this.currentIndex];
+    },
+  },
+  methods: {
+    nextInfo() {
+      this.currentIndex = (this.currentIndex + 1) % this.companyinformations.length;
+    },
+    prevInfo() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.companyinformations.length) %
+        this.companyinformations.length;
     },
   },
 };
@@ -44,6 +72,8 @@ export default {
     color: #fff;
     text-align: center;
     padding:20px;
+    height: auto;
+    min-height: 35vh;
 }
   .left {
     display: flex;
@@ -56,6 +86,9 @@ export default {
   .corner {
     width: 30px;
     height: 55px;
+  }
+  .corner:hover {
+    cursor: pointer;
   }
 .company-info {
     font-size: 16px;
@@ -107,7 +140,7 @@ export default {
       font-size: 16px;
     }
     .company-info p{
-    font-size: 12px;
+    font-size: 18px;
     }
     .header-company-info{
       width: 100%;
