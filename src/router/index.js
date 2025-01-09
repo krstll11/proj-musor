@@ -12,33 +12,22 @@ const router = createRouter({
     {
       path: '/musor',
       name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/AboutView.vue'),
     },
     {
       path: '/cleaning',
       name: 'Cleaning',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/CleaningView.vue'),
     },
     {
       path: '/ccleaning',
       name: 'Ccleaning',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+    
       component: () => import('../views/CommCleaningView.vue'),
     },
     {
       path: '/map',
       name: 'map',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
       component: () => import('../views/MapView.vue'),
     }
     
